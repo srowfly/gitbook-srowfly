@@ -13,9 +13,8 @@
     * [第9节：iOS10_textfield下沉问题](Chapter1/2016-10-27-iOS10_textfield下沉问题.md)
     * [第10节：Grid](Chapter1/2018-01-21-Grid.md)
     * [第11节：优化iPhone存储空间惹的祸](Chapter1/2018-03-21-优化iPhone存储空间惹的祸.md)
-    * [第12节：深入理解Objective-C：Category](Chapter1/2018-09-20-深入理解Objective-C：Category.md)
 * [第二章](Chapter2/README.md)
-	 * 	[第1节：徽杭古道](Chapter2/2017-04-03-徽杭古道.md)
+   * 	[第1节：徽杭古道](Chapter2/2017-04-03-徽杭古道.md)
 * [第三章](Chapter3/README.md)
 * [第四章](Chapter4/README.md)
 
