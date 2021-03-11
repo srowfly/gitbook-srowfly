@@ -1,0 +1,545 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第13节：weak实现 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Chapter2/" />
+    
+    
+    <link rel="prev" href="2018-09-20-深入理解Objective-C：Category.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第一章
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="2016-03-09-FBKVOController.html">
+            
+                <a href="2016-03-09-FBKVOController.html">
+            
+                    
+                    第1节：FBKVOController
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2016-03-15-learn-BlocksKit.html">
+            
+                <a href="2016-03-15-learn-BlocksKit.html">
+            
+                    
+                    第2节：learn-BlocksKit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="2016-03-21-线程队列.html">
+            
+                <a href="2016-03-21-线程队列.html">
+            
+                    
+                    第3节：线程队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="2016-04-08-runtime.html">
+            
+                <a href="2016-04-08-runtime.html">
+            
+                    
+                    第4节：runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="2016-04-24-琐碎.html">
+            
+                <a href="2016-04-24-琐碎.html">
+            
+                    
+                    第5节：琐碎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="2016-07-08-hotfix调用.html">
+            
+                <a href="2016-07-08-hotfix调用.html">
+            
+                    
+                    第6节：hotfix调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="2016-08-18-ios中使用blend改变图片颜色.html">
+            
+                <a href="2016-08-18-ios中使用blend改变图片颜色.html">
+            
+                    
+                    第7节：ios中使用blend改变图片颜色
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="2016-08-29-图片扩展.html">
+            
+                <a href="2016-08-29-图片扩展.html">
+            
+                    
+                    第8节：图片扩展
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="2016-10-27-iOS10_textfield下沉问题.html">
+            
+                <a href="2016-10-27-iOS10_textfield下沉问题.html">
+            
+                    
+                    第9节：iOS10_textfield下沉问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="2018-01-21-Grid.html">
+            
+                <a href="2018-01-21-Grid.html">
+            
+                    
+                    第10节：Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="2018-03-21-优化iPhone存储空间惹的祸.html">
+            
+                <a href="2018-03-21-优化iPhone存储空间惹的祸.html">
+            
+                    
+                    第11节：优化iPhone存储空间惹的祸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="2018-09-20-深入理解Objective-C：Category.html">
+            
+                <a href="2018-09-20-深入理解Objective-C：Category.html">
+            
+                    
+                    第12节：深入理解Objective-C：Category
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.13" data-path="2020-02-02-weak实现.html">
+            
+                <a href="2020-02-02-weak实现.html">
+            
+                    
+                    第13节：weak实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Chapter2/">
+            
+                <a href="../Chapter2/">
+            
+                    
+                    第二章
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Chapter2/2017-04-03-徽杭古道.html">
+            
+                <a href="../Chapter2/2017-04-03-徽杭古道.html">
+            
+                    
+                    第1节：徽杭古道
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Chapter3/">
+            
+                <a href="../Chapter3/">
+            
+                    
+                    第三章
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Chapter4/">
+            
+                <a href="../Chapter4/">
+            
+                    
+                    第四章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第13节：weak实现</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="weak&#x5B9E;&#x73B0;">weak&#x5B9E;&#x73B0;</h2>
+<h3 id="weak&#x57FA;&#x672C;&#x7528;&#x6CD5;">weak&#x57FA;&#x672C;&#x7528;&#x6CD5;</h3>
+<p>weak&#x662F;&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x7528;weak&#x63CF;&#x8FF0;&#x4FEE;&#x9970;&#x6216;&#x8005;&#x6240;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x4E0D;&#x4F1A;&#x52A0;&#x4E00;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x5728;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x91CA;&#x653E;&#x7684;&#x65F6;&#x5019;&#x81EA;&#x52A8;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;nil&#xFF0C;&#x5927;&#x5927;&#x907F;&#x514D;&#x4E86;&#x91CE;&#x6307;&#x9488;&#x8BBF;&#x95EE;&#x574F;&#x5185;&#x5B58;&#x5F15;&#x8D77;&#x5D29;&#x6E83;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x53E6;&#x5916;weak&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x89E3;&#x51B3;&#x5FAA;&#x73AF;&#x5F15;&#x7528;</p>
+<h4 id="weak&#x539F;&#x7406;">weak&#x539F;&#x7406;</h4>
+<p>weak&#x8868;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;hash&#xFF08;&#x54C8;&#x5E0C;&#xFF09;&#x8868;&#xFF0C;Key&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF0C;Value&#x662F;weak&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#x6570;&#x7EC4;</p>
+<p>weak&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x539F;&#x7406;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<p>Runtime&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;weak&#x8868;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6307;&#x5411;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x3002;weak&#x8868;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;hash&#x8868;&#xFF0C;Key&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF0C;value&#x662F;weak&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#xFF08;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x7684;&#x503C;&#x662F;&#x6240;&#x6307;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#xFF09;&#x6570;&#x7EC4;&#x3002;
+&#x4E3A;&#x4EC0;&#x4E48;value&#x662F;&#x6570;&#x7EC4;&#xFF1F;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x88AB;&#x591A;&#x4E2A;&#x5F31;&#x5F15;&#x7528;&#x6307;&#x9488;&#x6307;&#x5411;</p>
+<h4 id="weak&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;">weak&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;</h4>
+<p>1.&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF1A;runtime&#x4F1A;&#x8C03;&#x7528;objc_initWeak&#x51FD;&#x6570;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;weak&#x6307;&#x9488;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<p>2&#x3001;&#x6DFB;&#x52A0;&#x5F15;&#x7528;&#x65F6;&#xFF1A;objc_initWeak&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528; objc_storeWeak() &#x51FD;&#x6570;&#xFF0C; objc_storeWeak() &#x7684;&#x4F5C;&#x7528;&#x662F;&#x66F4;&#x65B0;&#x6307;&#x9488;&#x6307;&#x5411;&#xFF0C;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;&#x3002;</p>
+<p><img src="https://s5.mogucdn.com/mlcdn/c45406/210311_796a706h5172489d4l37l8cic7g8e_1024x1024.webp" alt=""></p>
+<p>3&#x3001;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x8C03;&#x7528;clearDeallocating&#x51FD;&#x6570;&#x3002;clearDeallocating&#x51FD;&#x6570;&#x9996;&#x5148;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x83B7;&#x53D6;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x5730;&#x5740;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x628A;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBE;&#x4E3A;nil&#xFF0C;&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E2A;entry&#x4ECE;weak&#x8868;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x8BB0;&#x5F55;&#x3002;</p>
+<h3 id="weak&#x5B9E;&#x73B0;&#x4E09;&#x6B65;&#x9AA4;&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#xFF1A;">weak&#x5B9E;&#x73B0;&#x4E09;&#x6B65;&#x9AA4;&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#xFF1A;</h3>
+<p>1&#x3001;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF1A;runtime&#x4F1A;&#x8C03;&#x7528;objc_initWeak&#x51FD;&#x6570;&#xFF0C;objc_initWeak&#x51FD;&#x6570;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;weak&#x6307;&#x9488;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<p><img src="https://s5.mogucdn.com/mlcdn/c45406/210311_77ia2dah84jff8fkcjhc5kj968k2c_954x962.png" alt=""></p>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code> NSObject *obj = [[NSObject alloc] init];
+ id __weak obj1 = obj;
+</code></pre><p>&#x5F53;&#x6211;&#x4EEC;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;weak&#x53D8;&#x91CF;&#x65F6;&#xFF0C;runtime&#x4F1A;&#x8C03;&#x7528; NSObject.mm &#x4E2D;&#x7684;objc_initWeak&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5728;Clang&#x4E2D;&#x7684;&#x58F0;&#x660E;&#x5982;&#x4E0B;&#xFF1A;
+
+id objc_initWeak(id *object, id value);
+
+    &#x800C;&#x5BF9;&#x4E8E; objc_initWeak() &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;
+
+    id objc_initWeak(id *location, id newObj) {
+    // &#x67E5;&#x770B;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x662F;&#x5426;&#x6709;&#x6548;,&#x65E0;&#x6548;&#x5BF9;&#x8C61;&#x76F4;&#x63A5;&#x5BFC;&#x81F4;&#x6307;&#x9488;&#x91CA;&#x653E;
+    if (!newObj) {
+        *location = nil;
+        return nil;
+    }
+    // &#x8FD9;&#x91CC;&#x4F20;&#x9012;&#x4E86;&#x4E09;&#x4E2A; bool &#x6570;&#x503C;
+    // &#x4F7F;&#x7528; template &#x8FDB;&#x884C;&#x5E38;&#x91CF;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x662F;&#x4E3A;&#x4E86;&#x4F18;&#x5316;&#x6027;&#x80FD;
+    return storeWeakfalse/*old*/, true/*new*/, true/*crash*/&gt;
+    (location, (objc_object*)newObj);
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x5148;&#x5224;&#x65AD;&#x4E86;&#x5176;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x6709;&#x6548;&#xFF0C;&#x65E0;&#x6548;&#x76F4;&#x63A5;&#x91CA;&#x653E;&#x8FD4;&#x56DE;&#xFF0C;&#x4E0D;&#x518D;&#x5F80;&#x6DF1;&#x5C42;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x3002;&#x5426;&#x5219;&#xFF0C;object&#x5C06;&#x901A;&#x8FC7;bjc_storeWeak&#x51FD;&#x6570;&#x88AB;&#x6CE8;&#x518C;&#x4E3A;&#x4E00;&#x4E2A;&#x6307;&#x5411;value&#x7684;__weak&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;objc_initWeak&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x524D;&#x63D0;&#x6761;&#x4EF6;&#xFF1A;&#x5C31;&#x662F;object&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x88AB;&#x6CE8;&#x518C;&#x4E3A;__weak&#x5BF9;&#x8C61;&#x7684;&#x6709;&#x6548;&#x6307;&#x9488;&#x3002;&#x800C;value&#x5219;&#x53EF;&#x4EE5;&#x662F;null&#xFF0C;&#x6216;&#x8005;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>2&#x3001;&#x6DFB;&#x52A0;&#x5F15;&#x7528;&#x65F6;&#xFF1A;objc_initWeak&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528; objc_storeWeak() &#x51FD;&#x6570;&#xFF0C; objc_storeWeak() &#x7684;&#x4F5C;&#x7528;&#x662F;&#x66F4;&#x65B0;&#x6307;&#x9488;&#x6307;&#x5411;&#xFF0C;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x8868;&#x3002;</p>
+<p><img src="https://s5.mogucdn.com/mlcdn/c45406/210311_8bejl5le39gj6k259639cc3i3ffhl_990x1042.png" alt=""></p>
+<p>objc_storeWeak&#x7684;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>id objc_storeWeak(id *location, id value);</p>
+<p>3&#x3001;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x8C03;&#x7528;clearDeallocating&#x51FD;&#x6570;&#x3002;clearDeallocating&#x51FD;&#x6570;&#x9996;&#x5148;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x83B7;&#x53D6;&#x6240;&#x6709;weak&#x6307;&#x9488;&#x5730;&#x5740;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x628A;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBE;&#x4E3A;nil&#xFF0C;&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E2A;entry&#x4ECE;weak&#x8868;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x6700;&#x540E;&#x6E05;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x8BB0;&#x5F55;&#x3002;</p>
+<p>&#x5F53;weak&#x5F15;&#x7528;&#x6307;&#x5411;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x91CA;&#x653E;&#x65F6;&#xFF0C;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x53BB;&#x5904;&#x7406;weak&#x6307;&#x9488;&#x7684;&#x5462;&#xFF1F;&#x5F53;&#x91CA;&#x653E;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x5176;&#x57FA;&#x672C;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>1&#x3001;&#x8C03;&#x7528;objc_release
+2&#x3001;&#x56E0;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;0&#xFF0C;&#x6240;&#x4EE5;&#x6267;&#x884C;dealloc
+3&#x3001;&#x5728;dealloc&#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x4E86;_objc_rootDealloc&#x51FD;&#x6570;
+4&#x3001;&#x5728;_objc_rootDealloc&#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x4E86;object_dispose&#x51FD;&#x6570;
+5&#x3001;&#x8C03;&#x7528;objc_destructInstance
+6&#x3001;&#x6700;&#x540E;&#x8C03;&#x7528;objc_clear_deallocating,&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;
+   a. &#x4ECE;weak&#x8868;&#x4E2D;&#x83B7;&#x53D6;&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x4E3A;&#x952E;&#x503C;&#x7684;&#x8BB0;&#x5F55;
+   b. &#x5C06;&#x5305;&#x542B;&#x5728;&#x8BB0;&#x5F55;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x9644;&#x6709; weak&#x4FEE;&#x9970;&#x7B26;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x8D4B;&#x503C;&#x4E3A;   nil
+   c. &#x5C06;weak&#x8868;&#x4E2D;&#x8BE5;&#x8BB0;&#x5F55;&#x5220;&#x9664;
+   d. &#x4ECE;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x4E3A;&#x952E;&#x503C;&#x7684;&#x8BB0;&#x5F55;
+</code></pre><h4 id="weak&#xFF0C;unsafeunretained-unowned-&#x4E0E;-assign&#x533A;&#x522B;">weak&#xFF0C;__unsafe_unretained, unowned &#x4E0E; assign&#x533A;&#x522B;</h4>
+<ul>
+<li><p>__unsafe_unretained: &#x4E0D;&#x4F1A;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;retain,&#x5F53;&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x65F6;,&#x4F1A;&#x4F9D;&#x7136;&#x6307;&#x5411;&#x4E4B;&#x524D;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;(&#x91CE;&#x6307;&#x9488;)</p>
+</li>
+<li><p>weak: &#x4E0D;&#x4F1A;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;retain,&#x5F53;&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x65F6;,&#x4F1A;&#x81EA;&#x52A8;&#x6307;&#x5411;nil</p>
+</li>
+<li><p>assign: &#x5B9E;&#x8D28;&#x4E0E;__unsafe_unretained&#x7B49;&#x540C;</p>
+</li>
+<li><p>unsafe_unretained&#x4E5F;&#x53EF;&#x4EE5;&#x4FEE;&#x9970;&#x4EE3;&#x8868;&#x7B80;&#x5355;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;property&#xFF0C;weak&#x4E5F;&#x4E0D;&#x80FD;&#x4FEE;&#x9970;&#x7528;&#x6765;&#x4EE3;&#x8868;&#x7B80;&#x5355;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;property&#x3002;</p>
+</li>
+<li><p><strong>unsafe_unretained &#x4E0E; weak &#x6BD4;&#x8F83;&#xFF0C;&#x4F7F;&#x7528; weak &#x662F;&#x6709;&#x4EE3;&#x4EF7;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x539F;&#x7406;&#x53EF;&#x77E5;&#xFF0C;</strong>weak&#x9700;&#x8981;&#x68C0;&#x67E5;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6D88;&#x4EA1;&#xFF0C;&#x800C;&#x4E3A;&#x4E86;&#x77E5;&#x9053;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6D88;&#x4EA1;&#xFF0C;&#x81EA;&#x7136;&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x53BB;&#x8DDF;&#x8E2A;&#x5BF9;&#x8C61;&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3002;&#x4E5F;&#x6B63;&#x56E0;&#x6B64;&#xFF0C;<strong>unsafe_unretained &#x6BD4; </strong>weak&#x5FEB;,&#x6240;&#x4EE5;&#x5F53;&#x660E;&#x786E;&#x77E5;&#x9053;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x671F;&#x65F6;&#xFF0C;&#x9009;&#x62E9;<strong>unsafe_unretained &#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x63D0;&#x5347;&#xFF0C;&#x8FD9;&#x79CD;&#x6027;&#x80FD;&#x63D0;&#x5347;&#x662F;&#x5F88;&#x5FAE;&#x5C0F;&#x7684;&#x3002;&#x4F46;&#x5F53;&#x5F88;&#x6E05;&#x695A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;</strong>unsafe_unretained &#x4E5F;&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x81EA;&#x7136;&#x80FD;&#x5FEB;&#x4E00;&#x70B9;&#x662F;&#x4E00;&#x70B9;&#x3002;&#x800C;&#x5F53;&#x60C5;&#x51B5;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x9009;&#x7528; __weak &#x3002;</p>
+</li>
+<li><p>unowned&#x4F7F;&#x7528;&#x5728;Swift&#x4E2D;&#xFF0C;&#x4E5F;&#x4F1A;&#x5206; weak &#x548C; unowned&#x3002;unowned &#x7684;&#x542B;&#x4E49;&#x8DDF; __unsafe_unretained &#x5DEE;&#x4E0D;&#x591A;&#x3002;&#x5047;&#x5982;&#x5F88;&#x660E;&#x786E;&#x7684;&#x77E5;&#x9053;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x671F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x9009;&#x62E9; unowned&#x3002;</p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2018-09-20-深入理解Objective-C：Category.html" class="navigation navigation-prev " aria-label="Previous page: 第12节：深入理解Objective-C：Category">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Chapter2/" class="navigation navigation-next " aria-label="Next page: 第二章">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第13节：weak实现","level":"1.2.13","depth":2,"next":{"title":"第二章","level":"1.3","depth":1,"path":"Chapter2/README.md","ref":"Chapter2/README.md","articles":[{"title":"第1节：徽杭古道","level":"1.3.1","depth":2,"path":"Chapter2/2017-04-03-徽杭古道.md","ref":"Chapter2/2017-04-03-徽杭古道.md","articles":[]}]},"previous":{"title":"第12节：深入理解Objective-C：Category","level":"1.2.12","depth":2,"path":"Chapter1/2018-09-20-深入理解Objective-C：Category.md","ref":"Chapter1/2018-09-20-深入理解Objective-C：Category.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Chapter1/2020-02-02-weak实现.md","mtime":"2021-03-11T06:33:38.328Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-11T06:34:43.481Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
